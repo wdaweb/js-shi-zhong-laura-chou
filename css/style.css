@@ -1,0 +1,474 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+/* 背景 */
+.section {
+	font-size: 1em;
+	text-align: center;
+	background:linear-gradient(to top, #52ACFF, #FFE32C);;
+	width: 100%;
+	height: 900px;
+
+	-webkit-transition: background 0.5s ease-in-out;
+		transition: background 0.5s ease-in-out;
+}
+.afternoon .section{
+  background: linear-gradient(to top, #FF2525 , #FFE53B);
+}
+.night .section {
+	background: linear-gradient(to top, #111936, #285A7B);
+}
+
+/* 圓圈樣式 */
+.time-circle {
+  position: relative;
+  background: linear-gradient(to bottom, #52ACFF, #FFE32C);
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  border: 4.5px solid rgb(90, 90, 90);
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  text-align: center;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -25%);
+
+  -webkit-transition: all 1.1s ease-in-out;
+		transition: all 1.1s ease-in-out;
+}
+.night .time-circle{
+  background: linear-gradient(to bottom, #121b3b, #285A7B);
+  border-color: #e9e5d5;
+}
+
+.afternoon .time-circle{
+  background: linear-gradient(to bottom, #FF2525 , #FFE53B);
+  border-color: rgb(23, 16, 65);
+}
+
+/* 太陽 */
+.sun{
+  margin-top: 20px;
+  background: #FFFF33;
+  box-shadow: 0 0 20px rgba(242, 239, 136, 0.4);
+  width: 30%;
+  height: 30%;
+  border-radius: 50%;
+  position: relative;
+  left: 35%;
+  top: 5%;
+  -webkit-animation: pulse 5s ease infinite alternate;
+	animation: pulse 5s ease infinite alternate;
+  -webkit-transition: all 1.1s 0.4s ease;
+		transition: all 1.1s 0.4s ease;
+
+}
+
+/* 月亮 */
+.moon {
+  position: relative;
+  box-shadow: inset -30px 2px 0 0px rgb(255, 244, 99);
+  transform: rotate(-30deg);
+  background-color: transparent;
+  width: 22.5%;
+  height: 22.5%;
+  border-radius: 50%;
+  left: 120%;
+  margin-left: -50px;
+  top: -50%;
+ 
+  -webkit-transition: all 1.1s 0s ease;
+		transition: all 1.1s 0s ease;
+}
+@keyframes pulse {
+    0% {box-shadow: 0 0 20px rgba(242, 239, 136, 0.4);}
+    50% {box-shadow: 0 0 40px rgba(242, 239, 136, 1);}
+    100% {box-shadow: 0 0 20px rgba(242, 239, 136, 0.4);}
+}
+@-webkit-keyframes pulse {
+    0% {box-shadow: 0 0 20px rgba(242, 239, 136, 0.4);}
+    50% {box-shadow: 0 0 40px rgba(242, 239, 136, 1);}
+    100% {box-shadow: 0 0 20px rgba(242, 239, 136, 0.4);}
+}
+/* 太陽進場 */
+.morning{
+  top: 70%;
+  -webkit-transition: all 1.1s 0s ease;
+		  transition: all 1.1s 0s ease;
+}
+/* 太陽變日落 */
+.afternoon .sun{
+  background: #FFDD55	;
+  top: 50%;
+  -webkit-transition: all 1.1s 0s ease;
+		  transition: all 1.1s 0s ease;
+}
+
+/* 太陽退出 */
+.night .sun{
+  top: 70%;
+  -webkit-transition: all 1.1s 0s ease;
+		  transition: all 1.1s 0s ease;
+}
+
+/* 月亮進場位置 */
+.night .moon {
+  left: 65%;
+  top: -10%;
+
+  -webkit-transition: all 1.1s 0.4s ease;
+	transition: all 1.1s 0.4s ease;
+}
+
+/* 星星 */
+.stars {
+  opacity: 0;
+  margin-left: 100px;
+  top: 0;
+  left: 0;
+  -webkit-transition: all 0.8s 0s ease;
+		transition: all 0.8s 0s ease;
+  z-index: 1000;
+}
+/* 星星樣式 */
+.night .stars {
+  opacity: 1;
+
+  -webkit-transition: all 3s 0.4s ease;
+		transition: all 3s 0.4s ease;
+}
+
+
+
+.stars div:nth-child(n) {
+  position: absolute;
+  background: radial-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 1);
+  overflow: hidden;
+  width: 0.7%;
+  height: 0.7%;
+  margin-left: 20%;
+  margin-top: -20%;
+  -webkit-transition: all 1s 0s ease;
+		transition: all 1s 0s ease;
+}
+
+.night .stars div:nth-child(n) {
+  margin-left: 0;
+  margin-top: 0;
+
+  -webkit-transition: all 1s 0.4s ease-out;
+		transition: all 1s 0.4s ease-out;  
+}
+
+.stars div:nth-child(1) {
+  left: 55%;
+  top: 20%;
+}
+.stars div:nth-child(2) {
+  left: 60%;
+  top: 60%;
+}
+.stars div:nth-child(3) {
+  left: 40%;
+  top: 45%;
+}
+.stars div:nth-child(4) {
+  left: 15%;
+  top: 55%;
+}
+.stars div:nth-child(5) {
+  left: 40%;
+  top: 10%;
+}
+.stars div:nth-child(6) {
+  left: 80%;
+  top: 55%;
+}
+/* 流星 */
+.meteor{
+  position: absolute;
+  opacity: 0;
+  top: 0%;
+  left: 50%;
+  width: 1px;
+  background: transparent;
+  animation: star-fall 4s linear infinite;
+  z-index: 1000;
+}
+/* 流星尾巴 */
+.meteor::after{
+  content: ' ';
+  display: block;
+  border: 0px solid;
+  border-width: 0px 100px 2px 20px;
+  transform: rotate(-45deg);
+  border-color:transparent transparent transparent #FFF8E7;
+}
+/* 流星動畫 */
+@keyframes star-fall{
+  75%{
+    opacity: 0;
+  }
+  80%{
+    opacity: 1;
+    transform: translate3d(-100px, 100px, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.2) translate3d(-300px, 300px, 0);
+  }
+}
+.meteor2{
+  position: absolute;
+  opacity: 0;
+  left: 80%;
+  top: 15%;
+  width: 1px;
+  background: transparent;
+  animation: star-fall 4s linear 2s infinite;
+  z-index: 1000;
+}
+.meteor2::after{
+  content: ' ';
+  display: block;
+  border: 0px solid;
+  border-width: 0px 100px 2px 20px;
+  transform: rotate(-45deg);
+  border-color:transparent transparent transparent #FFF8E7;
+}
+/* 船 */
+.ship {
+  width: 100px;
+  position: absolute;
+  top: 52%;
+  left: 5%;
+  animation: boatMove 40s linear infinite;
+  -webkit-animation: boatMove 40s linear infinite;
+}
+
+.morning .whale{
+  top: 80%;
+}
+.morning .seagull{
+  top: 0%;
+}
+.morning .meteor{
+  top: -100%;
+}
+.morning .meteor2{
+  top: -100%;
+}
+.afternoon .ship{
+  top: 72%; 
+}
+.afternoon .whale{
+  top: 80%;
+}
+.afternoon .meteor{
+  top: -100%;
+}
+.afternoon .meteor2{
+  top: -100%;
+}
+
+.night .ship{
+  top: 72%; 
+}
+.night .seagull{
+  top: 0%;
+}
+/* 鯨魚 */
+.whale{
+  width: 150px;
+  position: absolute;
+  top: 60%;
+  left: 5%;
+  animation: whaleMove 40s linear infinite;
+  -webkit-animation: whaleMove 40s linear infinite;
+}
+/* 鯨魚移動範圍 */
+@keyframes whaleMove {
+  0% { transform: translateX(-150px)}
+  10% { transform:translate(-95px,-8px) rotate(-4deg);}
+  20% { transform:translate(-40px,-4px);}
+  30% { transform:translate(15px,-0px);}
+  40% { transform:translate(70px,-8px) rotate(-4deg);}
+  50% { transform:translate(125px,-4px);}
+  60% { transform:translate(180px,-0px);}
+  70% { transform:translate(235px,-8px) rotate(-4deg);}
+  80% { transform:translate(290px,-4px);}
+  90% { transform:translate(345px,-0px);}
+  100% { transform: translateX(400px);}
+}
+
+@-webkit-keyframes whaleMove {
+  0% { transform: translateX(-150px)}
+  10% { transform:translate(-95px,-8px) rotate(-4deg);}
+  20% { transform:translate(-40px,-4px);}
+  30% { transform:translate(15px,-0px);}
+  40% { transform:translate(70px,-8px) rotate(-4deg);}
+  50% { transform:translate(125px,-4px);}
+  60% { transform:translate(180px,-0px);}
+  70% { transform:translate(235px,-8px) rotate(-4deg);}
+  80% { transform:translate(290px,-4px);}
+  90% { transform:translate(345px,-0px);}
+  100% { transform: translateX(400px);}
+}
+
+/* 海鷗 */
+.seagull{
+  width: 50px;
+  position: absolute;
+  top: 35%;
+  left: 25%;
+  animation: birdMove 40s linear infinite;
+  -webkit-animation: birdMove 40s linear infinite;
+}
+.seagull2{
+  top: 60%;
+  left: 10%;
+}
+
+.seagull3{
+  top: 50%;
+  left: 20%;
+}
+
+.seagull4{
+  top: 40%;
+  left: 10%;
+}
+.seagull5{
+  top: 50%;
+  left: 0%;
+}
+/* 海鷗移動範圍 */
+@keyframes birdMove {
+  0% { transform: translateX(-150px) rotate(-15deg);}
+  20% { transform: translate(-40px,-20px) rotate(-15deg);}
+  40% { transform: translate(70px,-50px) rotate(-15deg);}
+  60% { transform: translate(180px,-80px) rotate(-15deg);}
+  80% { transform: translate(290px,-110px) rotate(-15deg);}
+  100% { transform: translate(400px,-140px) rotate(-15deg);}
+}
+/* 船移動範圍 */
+@keyframes boatMove {
+  0% { transform: translateX(-150px);}
+  20% { transform: translate(-40px,-1px) rotate(-3deg);}
+  40% { transform: translate(70px,2px) rotate(3deg);}
+  60% { transform: translate(180px,-1px) rotate(-3deg);}
+  80% { transform: translate(290px,2px) rotate(3deg);}
+  100% { transform: translateX(400px);}
+}
+
+@-webkit-keyframes boatMove {
+  0% { transform: translateX(-150px);}
+  20% { transform:translate(-13px,-1px) rotate(-5deg);}
+  40% { transform:translate(124px,2px) rotate(5deg);}
+  60% { transform:translate(262px,-1px) rotate(-5deg);}
+  80% { transform:translate(398px,2px) rotate(5deg);}
+  100% { transform: translateX(400px);}
+}
+
+
+/* 海洋 */
+.water {
+  position: absolute;
+  background: repeating-radial-gradient(ellipse farthest-corner at center -400%, #f5c30e 30%, #518eac 90%) repeat scroll 0 0 #518eac;
+  width: 100%;
+  height: 200px;
+  top: 68%;
+  z-index: 1900;
+  -webkit-transition: all 1.1s ease;
+		transition: all 1.1s ease;
+
+}
+/* 下午海洋樣式 */
+.afternoon .water{
+  background: repeating-radial-gradient(ellipse farthest-corner at center -400%,#f54f0e 30%, #4d83a7 90%) repeat scroll 0 0 #518eac;
+}
+/* 夜晚海洋樣式 */
+.night .water{
+  background: repeating-radial-gradient(ellipse farthest-corner at center -400%, #7fa1bb 30%, #1d425a 90%) repeat scroll 0 0 #1d425a;
+}
+
+.time-circle img{
+  display: block;   
+  position: absolute;
+}
+/* 中心點 */
+#center{
+  width: 10%;
+  top: 50%;
+  left: 50%;  
+  transform: translate(-50%, -50%);
+  z-index: 2300;
+}
+/* 指針 */
+#hour,
+#minute,
+#second{
+  position: absolute;
+  top: 50%;
+  left: 46%;          
+  transform-origin: center top;
+  transform: rotate(0deg);
+ 
+}
+/* 時針 */
+#hour {
+  width: 15%;
+  left: 42.5%; 
+  height: 120px;
+  z-index: 2000;
+}
+/* 分針 */
+#minute {
+  width: 4%;
+  height: 200px;
+  left: 48%;  
+  z-index: 2100; 
+}
+/* 秒針 */
+#second {
+  width: 8%;
+  height: 275px;
+  z-index: 2200;    
+}
+
+canvas{
+  position: absolute;
+  top: 50%;
+  left: 50%;  
+  transform: translate(-50%, -50%);
+  z-index: 1999;
+}
+
+/* 圖片按鈕 */
+#morning_btn,
+#afternoon_btn ,
+#night_btn,
+#auto_btn{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+#morning_btn:active,
+#afternoon_btn:active,
+#night_btn:active,
+#auto_btn:active{
+  box-shadow: inset 50px 50px 2rem #000;
+  
+}
+
+
+#text{
+  padding-top: 10px;
+  font-size: 40px;
+  text-shadow: 1px 1px 10px #fff;
+}

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- https://codepen.io/Catagen/pen/PqYdXR/ -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="fullpage">
+        <div class="section">
+            <div id="text">選擇樣式</div>
+            <div style="text-align: center; padding-top: 20px;">
+                <img id="morning_btn" src="images/morning.png" onclick="auto('off')"></img>
+                <img id="afternoon_btn" src="images/afternoon.png" onclick="auto('off')"></img>
+                <img id="night_btn" src="images/night.png" onclick="auto('off')"></img>
+                <img id="auto_btn" src="images/auto.png" onclick="auto('on')"></img>
+            </div>
+            <div class="time-circle">
+                <canvas id="canvas" width="500" height="500"></canvas>
+                <img id="center" src="images/morning_center.png"></img>
+                <img id="hour" src="images/morning_hour.png"></img>
+                <img id="minute" src="images/morning_minute.png"></img>
+                <img id="second" src="images/morning_second.png"></img>
+               
+                <div class="sun" ></div>
+                <div class="moon"></div>
+
+                <div class="stars">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class='meteor'></div>
+                <div class='meteor2'></div>
+                <img class="ship"  src="images/ship.png"/>
+                <img class="whale"  src="images/whale.png"/>    
+                <img class="seagull"  src="images/seagull.gif"/>    
+                <img class="seagull seagull2"  src="images/seagull.gif"/>    
+                <img class="seagull seagull3"  src="images/seagull.gif"/> 
+                <img class="seagull seagull4"  src="images/seagull.gif"/> 
+                <img class="seagull seagull5"  src="images/seagull.gif"/>    
+                <div class="water"></div>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    </div>
+    <script>
+        const center = document.getElementById('center');
+        const hour = document.getElementById('hour');
+        const minute = document.getElementById('minute');
+        const second = document.getElementById('second');
+        const canvas = document.getElementById("canvas");
+        //渲染環境
+        const context = canvas.getContext("2d");
+        let radius = canvas.height / 2;
+        context.translate(radius, radius);
+        radius = radius * 0.9
+        drawNumbers(context, radius, "#555");
+        $("#morning_btn").click(function () {
+            morning();
+        });
+        $("#afternoon_btn").click(function () {
+            afternoon();
+        });
+        $("#night_btn").click(function () {
+            night();
+        });
+        
+        
+
+        let open = 1
+        const setDate = () => {
+            const now = new Date();
+            let h = now.getHours();
+            let m = now.getMinutes();
+            let s = now.getSeconds();
+            hour.style.transform = `rotate(${h * 30 + 180}deg)`;
+            minute.style.transform = `rotate(${m * 6 + 180}deg)`;
+            second.style.transform = `rotate(${s * 6 + 180}deg)`;
+            if(open == 1){
+                if (h >= 6 && h <= 13) {
+                    morning();
+                } else if (h >= 14 && h <= 18) {
+                    afternoon();
+                } else {
+                    night();
+                }
+            }
+            
+            
+        }
+        setDate();
+        setInterval(setDate, 1000);
+
+        function auto(on){
+            if(on=="on"){
+                open = 1;
+            }else{
+                open = 0;
+            } 
+        }
+        function morning(){
+            $("#fullpage").removeClass("afternoon");
+            $("#fullpage").removeClass("night");
+            $("#fullpage").addClass("morning");
+            canvas.width = canvas.width; //清空畫布
+            context.translate(canvas.height / 2, canvas.height / 2);
+            radius = canvas.height / 2 * 0.9;
+            drawNumbers(context, radius, "rgb(90, 90, 90)");
+            center.src = "images/morning_center.png";
+            hour.src = "images/morning_hour.png";
+            minute.src = "images/morning_minute.png";
+            second.src = "images/morning_second.png";
+        }
+        function afternoon(){
+            $("#fullpage").removeClass("morning");
+            $("#fullpage").removeClass("night");
+            $("#fullpage").addClass("afternoon"); 
+            canvas.width = canvas.width; 
+            context.translate(canvas.height / 2, canvas.height / 2);
+            radius = canvas.height / 2 * 0.9;
+            drawNumbers(context, radius, "rgb(23, 16, 65)");        
+            center.src = "images/afternoon_center.png";
+            hour.src = "images/afternoon_hour.png";
+            minute.src = "images/afternoon_minute.png";
+            second.src = "images/afternoon_second.png";
+        }
+        function night(){
+            $("#fullpage").removeClass("morning");
+            $("#fullpage").removeClass("afternoon");
+            $("#fullpage").addClass("night");
+            canvas.width = canvas.width;
+            context.translate(canvas.height / 2, canvas.height / 2);
+            radius = canvas.height / 2 * 0.9;
+            drawNumbers(context, radius, "#e9e5d5");
+            center.src = "images/night_center.png";
+            hour.src = "images/night_hour.png";
+            minute.src = "images/night_minute.png";
+            second.src = "images/night_second.png";
+        }
+        function drawNumbers(ctx, radius, color) {            
+            ctx.fillStyle = color;   
+            // 數字
+            let num = [12,3,6,9]
+            // 字體大小為半徑的15％
+            ctx.font = radius*0.15 + "px arial";
+            // 文字對齊方式為打印位置的中間和中心
+            ctx.textBaseline="middle";
+            ctx.textAlign="center";
+            for(let i = 0; i < num.length; i++){
+                // 每個數字旋轉角度
+                let ang = i * Math.PI / 2;
+                ctx.rotate(ang);
+                // 打印位置到半徑的95％
+                ctx.translate(0, - radius*0.95);               
+                ctx.rotate(-ang);
+                //印出文字
+                ctx.fillText(num[i].toString(), 0, 0);
+                ctx.rotate(ang);
+                ctx.translate(0, radius*0.95);
+                ctx.rotate(-ang);
+            }
+            ctx.scale(2.1,2.1);
+            // 大刻度      
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = color;
+            for (let i=0;i<12;i++){
+               
+                ctx.beginPath();                
+                ctx.rotate(Math.PI/6);
+                ctx.moveTo(110,0);
+                ctx.lineTo(120,0);
+                ctx.stroke();
+             
+            }
+            
+           
+
+            //小刻度
+            ctx.lineWidth = 1;
+            
+            for (i=0;i<60;i++){
+                if (i%5!=0) {
+                    ctx.beginPath();
+                    ctx.moveTo(116,0);
+                    ctx.lineTo(120,0);
+                    ctx.stroke();
+                    
+                }
+                ctx.rotate(Math.PI/30);
+            }
+           
+        }
+    </script>
+</body>
+
+</html>
