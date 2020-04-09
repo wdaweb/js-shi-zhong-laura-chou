@@ -1,0 +1,73 @@
+/* 圓圈樣式 */
+/* 預設(早上) */
+.time-circle {
+  position: relative;
+  background: linear-gradient(to bottom, #52ACFF, #FFE32C);
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  border: 4.5px solid rgb(90, 90, 90);
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  text-align: center;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -25%);
+  transition: all 1.1s ease-in-out;
+  -webkit-transition: all 1.1s ease-in-out;      
+}
+/* 晚上 */
+.night .time-circle{
+  background: linear-gradient(to bottom, #121b3b, #285A7B);
+  border-color: #e9e5d5;
+}
+/* 下午 */
+.afternoon .time-circle{
+  background: linear-gradient(to bottom, #FF2525 , #FFE53B);
+  border-color: rgb(23, 16, 65);
+}
+
+.time-circle img{
+  display: block;   
+  position: absolute;
+}
+/* 中心點 */
+#center{
+  width: 10%;
+  top: 50%;
+  left: 50%;  
+  transform: translate(-50%, -50%);
+  z-index: 2300;
+}
+/* 指針 */
+#hour,
+#minute,
+#second{
+  position: absolute;
+  top: 50%;
+  left: 46%;          
+  transform-origin: center top;
+  transform: rotate(0deg);
+  
+}
+/* 時針 */
+#hour {
+  width: 15%;
+  left: 42.5%; 
+  height: 120px;
+  z-index: 2000;
+}
+/* 分針 */
+#minute {
+  width: 4%;
+  height: 200px;
+  left: 48%;  
+  z-index: 2100; 
+}
+/* 秒針 */
+#second {
+  width: 8%;
+  height: 275px;
+  z-index: 2200;    
+}
+

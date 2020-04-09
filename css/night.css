@@ -1,0 +1,183 @@
+/* 夜晚樣式 */
+
+/* 月亮 */
+.moon {
+    position: relative;
+    box-shadow: inset -30px 2px 0 0px rgb(255, 244, 99);
+    transform: rotate(-30deg);
+    background-color: transparent;
+    width: 22.5%;
+    height: 22.5%;
+    border-radius: 50%;
+    left: 120%;
+    margin-left: -50px;
+    top: -50%;
+   
+    -webkit-transition: all 1.1s 0s ease;
+          transition: all 1.1s 0s ease;
+}
+
+
+/* 太陽退出 */
+.night .sun{
+    top: 70%;
+    transition: all 1.1s 0s ease;
+    -webkit-transition: all 1.1s 0s ease;
+            
+}
+  
+/* 月亮進場位置 */
+.night .moon {
+    left: 65%;
+    top: -10%;
+    transition: all 1.1s 0.4s ease;
+    -webkit-transition: all 1.1s 0.4s ease;
+}
+   
+/* 星星 */
+.stars {
+    opacity: 0;
+    margin-left: 100px;
+    top: 0;
+    left: 0;
+    -webkit-transition: all 0.8s 0s ease;
+            transition: all 0.8s 0s ease;
+    z-index: 1000;
+}
+/* 夜晚時顯示星星 */
+.night .stars {
+    opacity: 1;
+    transition: all 3s 0.4s ease;
+    -webkit-transition: all 3s 0.4s ease;
+        
+}
+/* 星星樣式 */
+.stars div:nth-child(n) {
+    position: absolute;
+    background: radial-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 1);
+    overflow: hidden;
+    width: 0.7%;
+    height: 0.7%;
+    margin-left: 20%;
+    margin-top: -20%;
+    -webkit-transition: all 1s 0s ease;
+            transition: all 1s 0s ease;
+}
+/* 星星位置 */
+.stars div:nth-child(1) {
+    left: 55%;
+    top: 20%;
+}
+.stars div:nth-child(2) {
+    left: 60%;
+    top: 60%;
+}
+.stars div:nth-child(3) {
+    left: 40%;
+    top: 45%;
+}
+.stars div:nth-child(4) {
+    left: 15%;
+    top: 55%;
+}
+.stars div:nth-child(5) {
+    left: 40%;
+    top: 10%;
+}
+.stars div:nth-child(6) {
+    left: 80%;
+    top: 55%;
+}
+/* 夜晚時星星出現方向 */
+.night .stars div:nth-child(n) {
+    margin-left: 0;
+    margin-top: 0;
+    transition: all 1s 0.4s ease-out;  
+    -webkit-transition: all 1s 0.4s ease-out;
+}
+
+
+/* 流星1 */
+.meteor{
+    position: absolute;
+    opacity: 0;
+    top: 0%;
+    left: 50%;
+    width: 1px;
+    background: transparent;
+    animation: star-fall 4s linear infinite;
+    z-index: 1000;
+}
+/* 流星尾巴 */
+.meteor::after{
+    content: ' ';
+    display: block;
+    border: 0px solid;
+    border-width: 0px 100px 2px 20px;
+    transform: rotate(-45deg);
+    border-color:transparent transparent transparent #FFF8E7;
+}
+/* 流星2 */
+.meteor2{
+    position: absolute;
+    opacity: 0;
+    left: 80%;
+    top: 15%;
+    width: 1px;
+    background: transparent;
+    animation: star-fall 4s linear 2s infinite;
+    z-index: 1000;
+}
+.meteor2::after{
+    content: ' ';
+    display: block;
+    border: 0px solid;
+    border-width: 0px 100px 2px 20px;
+    transform: rotate(-45deg);
+    border-color:transparent transparent transparent #FFF8E7;
+}
+/* 流星動畫 */
+@keyframes star-fall{
+    75%{
+        opacity: 0;
+    }
+    80%{
+        opacity: 1;
+        transform: translate3d(-100px, 100px, 0);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.2) translate3d(-300px, 300px, 0);
+    }
+}   
+
+@-webkit-keyframes star-fall{
+    75%{
+        opacity: 0;
+    }
+    80%{
+        opacity: 1;
+        transform: translate3d(-100px, 100px, 0);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.2) translate3d(-300px, 300px, 0);
+    }
+}   
+/* 早上流星位置 */
+.morning .meteor{
+    top: -100%;
+}
+.morning .meteor2{
+    top: -100%;
+}
+
+/* 下午流星位置 */
+.afternoon .meteor{
+    top: -100%;
+}
+.afternoon .meteor2{
+    top: -100%;
+}

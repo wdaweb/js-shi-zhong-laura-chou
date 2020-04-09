@@ -1,0 +1,12 @@
+/* 下午樣式 */
+
+
+/* 太陽變日落 */
+.afternoon .sun{
+    background: #FFDD55	;
+    top: 50%;
+    -webkit-transition: all 1.1s 0s ease;
+            transition: all 1.1s 0s ease;
+}
+
+

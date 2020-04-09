@@ -1,0 +1,47 @@
+/* 鯨魚 */
+.whale{
+    width: 150px;
+    position: absolute;
+    top: 60%;
+    left: 5%;
+    animation: whaleMove 40s linear infinite;
+    -webkit-animation: whaleMove 40s linear infinite;
+}
+
+
+/* 鯨魚移動動畫 */
+@keyframes whaleMove {
+    0% { transform: translateX(-150px)}
+    10% { transform:translate(-95px,-8px) rotate(-4deg);}
+    20% { transform:translate(-40px,-4px);}
+    30% { transform:translate(15px,-0px);}
+    40% { transform:translate(70px,-8px) rotate(-4deg);}
+    50% { transform:translate(125px,-4px);}
+    60% { transform:translate(180px,-0px);}
+    70% { transform:translate(235px,-8px) rotate(-4deg);}
+    80% { transform:translate(290px,-4px);}
+    90% { transform:translate(345px,-0px);}
+    100% { transform: translateX(400px);}
+}
+  
+@-webkit-keyframes whaleMove {
+    0% { transform: translateX(-150px)}
+    10% { transform:translate(-95px,-8px) rotate(-4deg);}
+    20% { transform:translate(-40px,-4px);}
+    30% { transform:translate(15px,-0px);}
+    40% { transform:translate(70px,-8px) rotate(-4deg);}
+    50% { transform:translate(125px,-4px);}
+    60% { transform:translate(180px,-0px);}
+    70% { transform:translate(235px,-8px) rotate(-4deg);}
+    80% { transform:translate(290px,-4px);}
+    90% { transform:translate(345px,-0px);}
+    100% { transform: translateX(400px);}
+}
+/* 早上鯨魚位置 */
+.morning .whale{
+    top: 80%;
+}
+/* 下午鯨魚位置 */
+.afternoon .whale{
+    top: 80%;
+}

@@ -1,0 +1,32 @@
+/* 圖片按鈕 */
+#morning_btn,
+#afternoon_btn ,
+#night_btn,
+#auto_btn{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+#morning_btn:active,
+#afternoon_btn:active,
+#night_btn:active,
+#auto_btn:active{
+  box-shadow: inset 50px 50px 2rem #000;
+}
+
+/* 選擇樣式文字 */
+#text{
+  padding-top: 10px;
+  font-size: 40px;
+  text-shadow: 1px 1px 10px #fff;
+}
+
+/* 標籤cavas樣式 */
+canvas{
+  position: absolute;
+  top: 50%;
+  left: 50%;  
+  transform: translate(-50%, -50%);
+  z-index: 1999;
+}
