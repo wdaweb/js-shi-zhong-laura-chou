@@ -1,4 +1,9 @@
 /* 圓圈樣式 */
+.clock {
+  display: flex;
+  align-items: center;
+  width: 80%;
+}
 /* 預設(早上) */
 .time-circle {
   position: relative;

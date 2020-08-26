@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- https://codepen.io/Catagen/pen/PqYdXR/ -->
+<!-- 參考網站：https://codepen.io/Catagen/pen/PqYdXR/ -->
 
 <head>
     <meta charset="UTF-8">
@@ -15,58 +15,56 @@
     <link rel="stylesheet" href="css/ship.css">
     <link rel="stylesheet" href="css/seagull.css">
     <link rel="stylesheet" href="css/whale.css">
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <title>Document</title>
-    <style>
-
-    </style>
+    <title>時鐘</title>
 </head>
 
 <body>
     <div id="fullpage">
         <div class="section">
-            <div id="text">選擇樣式</div>
-            <div style="text-align: center; padding-top: 20px;">
-                <img id="morning_btn" src="images/morning.png" onclick="auto('off')"></img>
-                <img id="afternoon_btn" src="images/afternoon.png" onclick="auto('off')"></img>
-                <img id="night_btn" src="images/night.png" onclick="auto('off')"></img>
-                <img id="auto_btn" src="images/auto.png" onclick="auto('on')"></img>
+            <div class="choose">
+                <div class="text">選擇樣式</div>
+                <div id="morning_btn"  onclick="auto('off')"><img src="images/morning.png"></img></div>
+                <div id="afternoon_btn" onclick="auto('off')"><img src="images/afternoon.png"></img></div>
+                <div id="night_btn" onclick="auto('off')"><img src="images/night.png"></img></div>
+                <div id="auto_btn" onclick="auto('on')"><img src="images/auto.png"></img></div>
             </div>
-            <div class="time-circle">
-                <canvas id="canvas" width="500" height="500"></canvas>
-                <img id="center" src="images/morning_center.png"></img>
-                <img id="hour" src="images/morning_hour.png"></img>
-                <img id="minute" src="images/morning_minute.png"></img>
-                <img id="second" src="images/morning_second.png"></img>
+            <div class="clock">
+                <div class="time-circle">
+                    <canvas id="canvas" width="500" height="500"></canvas>
+                    <img id="center" src="images/morning_center.png"></img>
+                    <img id="hour" src="images/morning_hour.png"></img>
+                    <img id="minute" src="images/morning_minute.png"></img>
+                    <img id="second" src="images/morning_second.png"></img>
 
-                <div class="sun"></div>
-                <div class="moon"></div>
+                    <div class="sun"></div>
+                    <div class="moon"></div>
 
-                <div class="stars">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                    <div class="stars">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class='meteor'></div>
+                    <div class='meteor2'></div>
+                    <img class="ship" src="images/ship.png" />
+                    <img class="whale" src="images/whale.png" />
+                    <img class="seagull" src="images/seagull.gif" />
+                    <img class="seagull seagull2" src="images/seagull.gif" />
+                    <img class="seagull seagull3" src="images/seagull.gif" />
+                    <img class="seagull seagull4" src="images/seagull.gif" />
+                    <img class="seagull seagull5" src="images/seagull.gif" />
+                    <div class="water"></div>
+
                 </div>
-                <div class='meteor'></div>
-                <div class='meteor2'></div>
-                <img class="ship" src="images/ship.png" />
-                <img class="whale" src="images/whale.png" />
-                <img class="seagull" src="images/seagull.gif" />
-                <img class="seagull seagull2" src="images/seagull.gif" />
-                <img class="seagull seagull3" src="images/seagull.gif" />
-                <img class="seagull seagull4" src="images/seagull.gif" />
-                <img class="seagull seagull5" src="images/seagull.gif" />
-                <div class="water"></div>
-
             </div>
-
         </div>
     </div>
 
     </div>
+    <script src="js/jquery-3.4.1.min.js"></script>
     <script>
         const center = document.getElementById('center');
         const hour = document.getElementById('hour');
@@ -79,16 +77,28 @@
         context.translate(radius, radius);
         radius = radius * 0.9
         drawNumbers(context, radius, "#555");
+        $("#auto_btn img").css('filter', 'brightness(1)')
         $("#morning_btn").click(function () {
             morning();
+            $("#morning_btn img").css('filter', 'brightness(1)')
+            $("#afternoon_btn img").css('filter', 'brightness(.5)')
+            $("#night_btn img").css('filter', 'brightness(.5)')
+            $("#auto_btn img").css('filter', 'brightness(.5)')
         });
         $("#afternoon_btn").click(function () {
             afternoon();
+            $("#morning_btn img").css('filter', 'brightness(.5)')
+            $("#afternoon_btn img").css('filter', 'brightness(1)')
+            $("#night_btn img").css('filter', 'brightness(.5)')
+            $("#auto_btn img").css('filter', 'brightness(.5)')
         });
         $("#night_btn").click(function () {
             night();
+            $("#morning_btn img").css('filter', 'brightness(.5)')
+            $("#afternoon_btn img").css('filter', 'brightness(.5)')
+            $("#night_btn img").css('filter', 'brightness(1)')
+            $("#auto_btn img").css('filter', 'brightness(.5)')
         });
-
 
         let open = 1 // 自動設定樣式開關
         const setDate = () => {
@@ -108,8 +118,6 @@
                     night();
                 }
             }
-
-
         }
         setDate();
         setInterval(setDate, 1000);
@@ -118,6 +126,10 @@
         function auto(on) {
             if (on == "on") {
                 open = 1;
+                $("#morning_btn img").css('filter', 'brightness(.5)')
+                $("#afternoon_btn img").css('filter', 'brightness(.5)')
+                $("#night_btn img").css('filter', 'brightness(.5)')
+                $("#auto_btn img").css('filter', 'brightness(1)')
             } else {
                 open = 0;
             }
@@ -202,8 +214,6 @@
 
             }
 
-
-
             //小刻度
             ctx.lineWidth = 1;
 
@@ -217,7 +227,6 @@
                 }
                 ctx.rotate(Math.PI / 30);
             }
-
         }
     </script>
 </body>

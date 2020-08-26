@@ -1,25 +1,48 @@
 /* 圖片按鈕 */
 #morning_btn,
-#afternoon_btn ,
+#afternoon_btn,
 #night_btn,
-#auto_btn{
-  width: 150px;
-  height: 150px;
+#auto_btn {
+  overflow: hidden;
   border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 5%;
+}
+#morning_btn img,
+#afternoon_btn img,
+#night_btn img,
+#auto_btn img {
+  width: 100%;
+  height: 100%;
+  transform: scale(1.1);
+  filter: brightness(.5);
 }
 
-#morning_btn:active,
-#afternoon_btn:active,
-#night_btn:active,
-#auto_btn:active{
-  box-shadow: inset 50px 50px 2rem #000;
+#morning_btn img:hover,
+#afternoon_btn img:hover,
+#night_btn img:hover,
+#auto_btn img:hover{
+  animation: zoom 5s ease forwards;
 }
-
+@keyframes zoom {
+  form {transform: scale(1.1);}
+  to {transform: scale(1.3);}
+}
+.choose {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  width: 20%;
+}
 /* 選擇樣式文字 */
-#text{
+.text{
   padding-top: 10px;
-  font-size: 40px;
+  font-size: 30px;
+  font-weight: bold;
   text-shadow: 1px 1px 10px #fff;
+  margin-bottom: 5%;
 }
 
 /* 標籤cavas樣式 */
